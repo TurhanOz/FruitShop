@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Fruit Shop</string>
+    <string name="error_content">No content</string>
+    <string name="waiting_content">Loading, please wait...</string>
+    <string name="basket_empty">Basket is empty, please select at least one delicious meal :)</string>
+    <string name="purchase">Order has been made, please wait for a moment before enjoying your meal :)</string>
+    <string name="price">price</string>
+
+</resources>

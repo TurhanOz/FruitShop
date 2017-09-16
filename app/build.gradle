@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+
+def configuration = rootProject.ext.configuration;
+def libraries = rootProject.ext.libraries;
+
+android {
+    compileSdkVersion configuration.compileSdkVersion
+    buildToolsVersion "${configuration.buildToolsVersion}"
+    defaultConfig {
+        applicationId "com.turhan.fruitshop"
+        minSdkVersion configuration.minSdkVersion
+        targetSdkVersion configuration.compileSdkVersion
+        versionCode 1
+        versionName "1.0.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile "com.android.support:appcompat-v7:${libraries.supportVersion}"
+    compile "com.android.support:design:${libraries.supportVersion}"
+    compile "com.android.support:support-annotations:${libraries.supportVersion}"
+    compile "com.android.support:cardview-v7:${libraries.supportVersion}"
+    compile "com.android.support:recyclerview-v7:${libraries.supportVersion}"
+    compile "com.android.support.constraint:constraint-layout:${libraries.constraintLayout}"
+    compile "com.squareup.okhttp3:okhttp:${libraries.okhttp}"
+    compile "com.squareup.okhttp3:logging-interceptor:${libraries.okhttp}"
+    compile "com.squareup.retrofit2:retrofit:${libraries.retrofit}"
+    compile "com.squareup.retrofit2:converter-gson:${libraries.retrofitConvertor}"
+    compile "com.squareup.retrofit2:adapter-rxjava2:${libraries.retrofitAdapter}"
+    compile "io.reactivex.rxjava2:rxjava:${libraries.rxjava}"
+    compile "io.reactivex.rxjava2:rxandroid:${libraries.rxandroid}"
+    compile "com.github.bumptech.glide:glide:${libraries.glide}"
+    annotationProcessor "com.github.bumptech.glide:compiler:${libraries.glide}"
+    compile "org.parceler:parceler-api:${libraries.parceler}"
+
+    testCompile 'junit:junit:4.12'
+}
